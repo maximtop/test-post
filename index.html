@@ -5,18 +5,58 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Test removeparam for POST requests</title>
 </head>
 <body>
-<button id="send">Send post</button>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="row mt-2">
+            <div class="col">
+                <h4>Add rule <code>||get.geojs.io^$removeparam</code> to the user rules.</h4>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div>
+                    You should see request to <code>https://get.geojs.io/v1/ip/country.json?test=123</code> after sending <code>POST</code> request
+                </div>
+                <div class="mt-2">
+                    <button id="send-post">Send POST request</button>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    You should see request to <code>https://get.geojs.io/v1/ip/country.json</code> after sending <code>GET</code> request
+                </div>
+                <div class="mt-2">
+                    <button id="send-get">Send GET request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     const URL = "https://get.geojs.io/v1/ip/country.json?test=123";
     const sendPost = async () => {
         const response = await fetch(URL, { method: "POST" });
         console.log(await response.json());
     };
-    const button = document.getElementById('send');
-    button.addEventListener('click', sendPost);
+    const sendPostBtn = document.getElementById('send-post');
+    sendPostBtn.addEventListener('click', sendPost);
+
+    const sendGet = async () => {
+        const response = await fetch(URL, { method: "GET" });
+        console.log(await response.json());
+    };
+    const sendGetBtn = document.getElementById('send-get');
+    sendGetBtn.addEventListener('click', sendGet);
 </script>
 </body>
 </html>
