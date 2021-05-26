@@ -10,7 +10,7 @@
 <body>
 <button id="send">Send post</button>
 <script>
-    const URL = "https://google.com/?test=123";
+    const URL = "https://get.geojs.io/v1/ip/country.json?test=123";
     const sendPost = async () => {
         const response = await fetch(URL, { method: "POST" });
         console.log(response);
