@@ -13,7 +13,7 @@
     const URL = "https://get.geojs.io/v1/ip/country.json?test=123";
     const sendPost = async () => {
         const response = await fetch(URL, { method: "POST" });
-        console.log(response);
+        console.log(await response.json());
     };
     const button = document.getElementById('send');
     button.addEventListener('click', sendPost);
